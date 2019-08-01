@@ -5,12 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%!
-		private IUserDao userDao = new UserDao(); 
-		private List<UserVo> userList = userDao.getUserList(); 
-		
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +12,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%!
+		private IUserDao userDao = new UserDao(); 
+		private List<UserVo> userList = userDao.getUserList(); 	
+	%>
 	
 	<%--1. userdao 선언
 		2. getUserList() 호출
