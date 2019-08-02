@@ -9,28 +9,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
    <!-- 파라미터를 받는다
       input tag의 name속성이 파라미터 이름
       userId, password
-      request.getparameter("userId");
-      request.getparameter("password");
+      String userId = request.getparameter("userId");
+      String password = request.getparameter("password");
    -->
    
    <%
-   //parameter 관련 메소드를 호출하기 전에 setCharacterEncoding 메소드를 호출해야
-   //엔코딩 설정이 적용된다
-   	 request.setCharacterEncoding("utf-8");
+      //parameter 관련 메소드를 호출하기 전에 setCharacterEncoding 메소드를 호출해야
+      //인코딩 설정이 적용된다
+      request.setCharacterEncoding("utf-8");
    %>
    
-   request method : <%=request.getMethod() %><br>
-   
+   request method : <%=request.getMethod() %> <br>
    
    <%
       String userId = request.getParameter("userId");
       String password = request.getParameter("password");
-      
    %>
    
    parameter userId : <%=userId %> <br>
