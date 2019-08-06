@@ -53,7 +53,7 @@
 		
 				UserVo userVo = (UserVo) session.getAttribute("S_USERVO");
 				String userName ="";
-	    		userName = userVo == null ? "" : userVo.getUserName();
+	    		userName = userVo == null ? "" : userVo.getUserNm();
             %>
             <li><a href="#"><%= userName %></a></li>
          </ul>
@@ -67,8 +67,10 @@
          
 <div class="col-sm-3 col-md-2 sidebar">
    <ul class="nav nav-sidebar">
-      <li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
+   	  <!-- a tag: get method  -->
+      <li class="active"><a href="<%= request.getContextPath() %>/userList">사용자리스트 <span class="sr-only">(current)</span></a></li>
       <li class="active"><a href="#">사용자</a></li>
+      
    </ul>
 </div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             

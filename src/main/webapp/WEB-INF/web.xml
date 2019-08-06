@@ -45,4 +45,14 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserListController</display-name>
+    <servlet-name>UserListController</servlet-name>
+    <servlet-class>kr.or.ddit.user.web.UserListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserListController</servlet-name>
+    <url-pattern>/UserListController</url-pattern>
+  </servlet-mapping>
 </web-app>
