@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <display-name>jsp</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>helloWorld</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>helloWorld</servlet-name>
-    <url-pattern>/helloWorld</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>TimeTablesServlet</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.TimesTablesServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TimeTablesServlet</servlet-name>
-    <url-pattern>/TimeTablesServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RedirectServlet</display-name>
-    <servlet-name>RedirectServlet</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.RedirectServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RedirectServlet</servlet-name>
-    <url-pattern>/RedirectServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LoginController</display-name>
-    <servlet-name>LoginController</servlet-name>
-    <servlet-class>kr.or.ddit.login.web.LoginController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginController</servlet-name>
-    <url-pattern>/LoginController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>UserListController</display-name>
-    <servlet-name>UserListController</servlet-name>
-    <servlet-class>kr.or.ddit.user.web.UserListController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserListController</servlet-name>
-    <url-pattern>/UserListController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ScopeServlet</display-name>
-    <servlet-name>ScopeServlet</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.ScopeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ScopeServlet</servlet-name>
-    <url-pattern>/ScopeServlet</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns="http://java.sun.com/xml/ns/javaee"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+   version="3.0">
+   <display-name>jsp</display-name>
+   <welcome-file-list>
+      <welcome-file>index.html</welcome-file>
+      <welcome-file>index.htm</welcome-file>
+      <welcome-file>index.jsp</welcome-file>
+      <welcome-file>default.html</welcome-file>
+      <welcome-file>default.htm</welcome-file>
+      <welcome-file>default.jsp</welcome-file>
+   </welcome-file-list>
+
+   <!-- 초기화 파라미터 -->
+   <context-param>
+      <param-name>ADMIN</param-name>
+      <param-value>brown</param-value>
+   </context-param>
+
+   <servlet>
+      <servlet-name>helloWorld</servlet-name>   <!-- 개발자가 붙여주는 서블릿 이름(별칭) -->
+      <servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class> <!-- 서블릿의 풀 네임 (패키지 + 클래스명) -->
+      <load-on-startup>1</load-on-startup>
+ <!-- <init-param>
+      	<param-name>test</param-name>
+      	<param-value>sally</param-value>
+      </init-param> -->
+   </servlet>
+   
+   <servlet-mapping>
+      <servlet-name>helloWorld</servlet-name>
+      <url-pattern>/helloWorld</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+      <servlet-name>TimesTablesServlet</servlet-name>   <!-- 개발자가 붙여주는 서블릿 이름(별칭) -->
+      <servlet-class>kr.or.ddit.servlet.TimesTablesServlet</servlet-class> <!-- 서블릿의 풀 네임 (패키지 + 클래스명) -->
+   </servlet>
+   
+   <servlet-mapping>
+      <servlet-name>TimesTablesServlet</servlet-name>
+      <url-pattern>/TimesTablesServlet</url-pattern>
+   </servlet-mapping>
+   
 </web-app>
