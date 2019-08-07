@@ -55,4 +55,14 @@
     <servlet-name>UserListController</servlet-name>
     <url-pattern>/UserListController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScopeServlet</display-name>
+    <servlet-name>ScopeServlet</servlet-name>
+    <servlet-class>kr.or.ddit.servlet.ScopeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScopeServlet</servlet-name>
+    <url-pattern>/ScopeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
