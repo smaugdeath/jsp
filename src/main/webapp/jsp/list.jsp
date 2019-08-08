@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.user.model.UserVo"%>
+<%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
 <%@page import="kr.or.ddit.user.repository.IUserDao"%>
@@ -13,10 +13,8 @@
 </head>
 <body>
 
-	<%!
-		private IUserDao userDao = new UserDao(); 
-		private List<UserVo> userList = userDao.getUserList(); 	
-	%>
+	<%!private IUserDao userDao = new UserDao(); 
+		private List<User> userList = userDao.getUserList();%>
 	
 	<%--1. userdao 선언
 		2. getUserList() 호출
@@ -27,7 +25,9 @@
 		<tr>
 			<th>이름</th>
 		</tr>
-		<% for (UserVo user : userList) { %>
+		<%
+			for (User user : userList) {
+		%>
 		<tr>
 			<td><%= user.getUserNm() %></td>
 		</tr>

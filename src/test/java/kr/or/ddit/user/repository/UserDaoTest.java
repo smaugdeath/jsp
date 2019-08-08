@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.User;
 
 public class UserDaoTest {
 
@@ -23,7 +23,7 @@ public class UserDaoTest {
 		IUserDao userDao = new UserDao();
 
 		/***When***/
-		List<UserVo> userList = userDao.getUserList();
+		List<User> userList = userDao.getUserList();
 
 		/***Then***/
 		assertEquals(5, userList.size());
@@ -43,7 +43,7 @@ public class UserDaoTest {
 		IUserDao userDao = new UserDao();
 
 		/***When***/
-		UserVo userVo = userDao.getUser(userId);
+		User userVo = userDao.getUser(userId);
 
 		/***Then***/
 		assertEquals("브라운", userVo.getUserNm());
