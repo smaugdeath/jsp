@@ -23,11 +23,11 @@
     
     <script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
     
-    
+    <script src="<%=request.getContextPath()%>/js/js.cookie.js"></script>
     
     <script>
     $(function() {
-      var __userId = getCookie('userId');
+      var __userId = Cookies.get('userId');
       if (__userId) {
         userId.value = __userId;
         // remember me checkbox 체크
@@ -46,35 +46,16 @@
         //   처음부터 아이디 쿠키 저장 기능을 사용하지 않는 경우
         //   ==> userId 쿠키를 삭제
         if (rememberMe.checked) {
-            setCookie('userId', userId.value, 30);
+            Cookies.set('userId', userId.value, { expires : 30 });
         } else {
-           deleteCookie('userId');
+           Cookies.remove("userId");
         }
+        
         
         // 로그인 요청
         $('#frm').submit();
       });
     });
-    
-
-    function getCookie(cookieId) {
-       for (var s of document.cookie.split(/; */)) {
-          var arr = s.split(/=/);
-          if (arr[0] === cookieId) return arr[1]; 
-       }
-       return undefined;
-    }
-
-    function setCookie(cookieNm, cookieValue, expires) {
-      var dt = new Date();
-      dt.setDate(dt.getDate() + Number(expires));
-
-      document.cookie = cookieNm + '=' + encodeURIComponent(cookieValue) + '; path=/; expires=' + dt.toGMTString();
-    }
-    
-    function deleteCookie(cookieNm) {
-       setCookie(cookieNm, '', 0);
-    }
     </script>
   </head>
 
