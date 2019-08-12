@@ -1,6 +1,7 @@
 package kr.or.ddit.login.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -25,7 +26,15 @@ public class LoginController extends HttpServlet {
     
    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
    
-   /**
+   private IUserDao userDao;
+    
+   @Override
+	public void init() throws ServletException {
+		userDao = new UserDao();
+	}
+   
+   
+/**
    * Method : doGet
    * 작성자 : PC-13
    * 변경이력 :
@@ -40,9 +49,13 @@ public class LoginController extends HttpServlet {
 	   
 	  // 웹브라우저가 보낸 cookie 확인
       Cookie[] cookies = request.getCookies();
-      for(Cookie cookie : cookies) {
-         logger.debug("cookie name: {}, cookie value: {}", cookie.getName(), cookie.getValue());
+      
+      if (cookies != null) {
+	      for(Cookie cookie : cookies) {
+	         logger.debug("cookie name: {}, cookie value: {}", cookie.getName(), cookie.getValue());
+	      }
       }
+      
       
       // 응답을 생성할때 웹브라우저에게 쿠키를 저장할 것을 지시
       Cookie cookie = new Cookie("serverGen", "serverValue");
@@ -68,11 +81,16 @@ public class LoginController extends HttpServlet {
       String userId = request.getParameter("userId");
       String pass = request.getParameter("pass");
       
+      String rememberMe = request.getParameter("rememberMe");
+    
+      manageUserIdCookie(response, userId, rememberMe);
+      
       logger.debug("userId : {}", userId);
       logger.debug("password : {}", pass);
+      
+      //사용자가 입력한 계정정보와 db에 있는 값이랑 비교
 
       //db에서 조회해온 사용자 정보라고 가정
-      IUserDao userDao = new UserDao();
       User user = userDao.getUser(userId);
 
       //사용자가 입력한 파라미터 정보와 db에서 조회해온 값이 동일할 경우 --> webapp/main.jsp
@@ -98,5 +116,17 @@ public class LoginController extends HttpServlet {
          doGet(request, response);
       }
    }
+   
+	private void manageUserIdCookie(HttpServletResponse response, String userId, String rememberMe) {
+		//rememberMe 파라미터가 존재할 경우 userId를 cookie로 생성
+	      Cookie cookie = new Cookie("userId", userId);
+	      if(rememberMe != null) {
+	    	  cookie.setMaxAge(60*60*24*30); //30일
+	      }else {
+	    	  cookie.setMaxAge(0); //삭제
+	      }
+	      
+	      response.addCookie(cookie);
+	}
 
 }

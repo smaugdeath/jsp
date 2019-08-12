@@ -27,16 +27,28 @@
     
     <script>
     $(function() {
-      var __userId = Cookies.get('userId');
-      if (__userId) {
-        userId.value = __userId;
+      var userId = Cookies.get("userId");
+      if (userId != undefined) {
+        $("#userId").val(userId);
         // remember me checkbox 체크
-        rememberMe.checked = true;
+        $("#rememberMe").prop("checked", true);
+        $("#pass").focus();
       }
         
       // signin btn 클릭 이벤트 핸들러
       $('#signinBtn').on('click', function(event) {
+    	/*   
          if (!userId.value || !pass.value) return;
+        if (rememberMe.checked) {
+            Cookies.set('userId', userId.value, { expires : 30 });
+        } else {
+           Cookies.remove("userId");
+        }
+         */
+        
+        // 로그인 요청
+        $('#frm').submit();
+        
         // rememberMe checkbox가 체크되었는지
         // 체크되어 있으면
         //    userId 쿠키를 생성하고, 값은 userId input의 값을 쿠키 값으로 설정
@@ -45,15 +57,6 @@
         //    기존에 사용자가 아이디를 쿠키에 저장하는 기능을 사용하다가 더 이상 사용하지 않는 경우
         //   처음부터 아이디 쿠키 저장 기능을 사용하지 않는 경우
         //   ==> userId 쿠키를 삭제
-        if (rememberMe.checked) {
-            Cookies.set('userId', userId.value, { expires : 30 });
-        } else {
-           Cookies.remove("userId");
-        }
-        
-        
-        // 로그인 요청
-        $('#frm').submit();
       });
     });
     </script>
@@ -82,7 +85,7 @@
         <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required> <!-- value="brown1234" -->
         <div class="checkbox">
           <label>
-            <input id="rememberMe" type="checkbox" value="remember-me"> Remember me
+            <input id="rememberMe" name="rememberMe" type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
         <button id="signinBtn" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
