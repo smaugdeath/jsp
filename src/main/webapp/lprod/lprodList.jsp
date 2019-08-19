@@ -16,12 +16,34 @@
 
 <%@ include file="/commonJsp/basicLib.jsp" %>
 
+<script>
+   $(document).ready(function(){
+      //사용자 정보 클릭시 이벤트 핸들러
+      $(".prodTr").on("click", function(){
+         console.log("prodTr click");
+         console.log($(this).children().first().text());
+//          console.log($("td:eq(0)", this).text());
 
+         //input 태그에 값 설정
+         $("#lprod_gu").val($(this).children().eq(1).text());
+         
+         //form 태그이용 전송
+//          $("#frm").serialize();
+         console.log("serialize() :" + $("#frm").serialize());
+         
+         $("#frm").submit();
+      });
+   });
+</script>
 
 
 </head>
 
 <body>
+<form id="frm" action="${cp }/prodList" method="get">
+   <input type="hidden" id="lprod_gu" name="lprod_gu"/>
+</form>
+
 
 <%@ include file="/commonJsp/header.jsp" %>
 
@@ -53,8 +75,8 @@
 				
 				
 				<c:forEach items="${lprodList }" var="list">
-					<tr>
-						<td>el : ${list.lprod_id }</td>
+					<tr class="prodTr">
+						<td>${list.lprod_id }</td>
 						<td>${list.lprod_gu }</td>
 						<td>${list.lprod_nm }</td>
 					</tr>	
