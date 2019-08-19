@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/jsp/sumJsp.jsp" method="get">
+	<form action="${cp }/jsp/sumJsp.jsp" method="get">
 		number : <input type="text" name="number"> <br>
 		number2 : <input type="text" name="number2"> <br>
 		<br><br>

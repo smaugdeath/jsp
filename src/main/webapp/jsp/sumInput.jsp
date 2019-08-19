@@ -9,7 +9,7 @@
 <body>
 
 <h2>sum input</h2>
-<form action="${pageContext.request.contextPath }/sumCalculation" method="post">
+<form action="${cp }/sumCalculation" method="post">
 start : <input type="text" name="start"/> <br>
 end : <input type="text" name="end"/> <br>
 <input type="submit" value="전송"/>
