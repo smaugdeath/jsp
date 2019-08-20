@@ -21,11 +21,12 @@
       //사용자 정보 클릭시 이벤트 핸들러
       $(".prodTr").on("click", function(){
          console.log("prodTr click");
-         console.log($(this).children().first().text());
-//          console.log($("td:eq(0)", this).text());
+
+		 var dataValue = $(this).data("lprod_gu");
+      	 console.log("dataValue : " + dataValue);
 
          //input 태그에 값 설정
-         $("#lprod_gu").val($(this).children().eq(1).text());
+         $("#lprod_gu").val(dataValue);
          
          //form 태그이용 전송
 //          $("#frm").serialize();
@@ -75,7 +76,7 @@
 				
 				
 				<c:forEach items="${lprodList }" var="list">
-					<tr class="prodTr">
+					<tr class="prodTr" data-lprod_gu="${list.lprod_gu }">
 						<td>${list.lprod_id }</td>
 						<td>${list.lprod_gu }</td>
 						<td>${list.lprod_nm }</td>

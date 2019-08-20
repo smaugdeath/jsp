@@ -19,23 +19,36 @@
 
 <%@ include file="/commonJsp/basicLib.jsp"%>
 <script>
-   $(document).ready(function(){
-      //사용자 정보 클릭시 이벤트 핸들러
-      $(".userTr").on("click", function(){
-         console.log("userTr click");
-         console.log($(this).children().first().text());
-//          console.log($("td:eq(0)", this).text());
-
-         //input 태그에 값 설정
-         $("#userId").val($(this).children().first().text());
-         
-         //form 태그이용 전송
-//          $("#frm").serialize();
-         console.log("serialize() :" + $("#frm").serialize());
-         
-         $("#frm").submit();
-      });
+//문서 로딩이 완료되고 나서
+$(document).ready(function(){
+   
+   //사용자 정보 클릭시 이벤트 핸들러
+   $(".prodTr").on("click", function(){
+      
+      console.log("prodTr click");
+      
+      //클릭된 tr 태그의 자식태그(td)중 첫번째 자식의 텍스트 문자열
+                  
+      //td태그의 텍스트 가져오기(두번째 자식)
+      var tdText = $($(this).children()[1]).text();
+      console.log("tdText : " + tdText);
+      
+      //input태그에 저장된 값 확인
+      var inputValue = $(this).find("input").val();
+      console.log("inputValue : " + inputValue);
+      
+      var dataValue = $(this).data("lprod_gu");
+      console.log("dataValue : " + dataValue);
+      
+      //input 태그에 값 설정
+      $("#lprod_gu").val(dataValue);
+      
+      //form 태그이용 전송
+      console.log("serialize : "  + $("#frm").serialize());
+      
+      $("#frm").submit();
    });
+});
 </script>
 </head>
 
@@ -70,23 +83,10 @@
                            <th>등록일시</th>
                         </tr>
 
-<%--                         <%
-                           List<User> userList = (List<User>) request.getAttribute("userList");
 
-                           for (User user : userList) {
-                        %>
-                        <tr>
-                           <td><%=user.getUserId()%></td>
-                           <td><%=user.getUserNm()%></td>
-                           <td></td>
-                           <td></td>
-                        </tr>
-                        <%
-                           }
-                        %> --%>
-                        <%-- for(User user : userList) --%>
                         <c:forEach items="${userList }" var="user">
-                           <tr class="userTr">
+                           <tr class="userTr" data-userid="${user.userId }">
+                           	  <input type="hidden" value="${user.userId }"/>
                               <td>${user.userId }</td>
                               <td>${user.userNm }</td>
                               <td>${user.alias }</td>
