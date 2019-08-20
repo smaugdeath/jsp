@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.user.service.UserService"%>
+<%@page import="kr.or.ddit.user.service.IUserService"%>
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
@@ -13,8 +15,8 @@
 </head>
 <body>
 
-	<%!private IUserDao userDao = new UserDao(); 
-		private List<User> userList = userDao.getUserList();%>
+	<%!private IUserService userService = new UserService(); 
+		private List<User> userList = userService.getUserList();%>
 	
 	<%--1. userdao 선언
 		2. getUserList() 호출
