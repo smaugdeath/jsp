@@ -21,4 +21,21 @@
       where rownum &lt;= 50
   </select>
   
+  <select id="getUserPagingList" parameterType="page" resultType="user">
+     select *
+	   from
+	       (select rownum rn, a.*
+	       from
+	           (select  *
+	           from    USERS
+	           order by userid) a)
+   	  where rn between #{size} * (#{page} - 1) + 1 and #{size} * #{page}
+  </select>
+  
+  <!-- 사용자 전체 건수 조회 -->
+  <select id="getUserTotalCnt" resultType="Integer">
+  		select count(*)
+  		  from users
+  </select>
+  
 </mapper>
