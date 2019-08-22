@@ -58,7 +58,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="reg_dt" class="col-sm-2 control-label">등록일</label>
+						<label for="reg_dt" class="col-sm-2 control-label">생일</label>
 						<div class="col-sm-10">
 							<label class="control-label">${user.reg_dt_fmt }</label>
 						</div>
