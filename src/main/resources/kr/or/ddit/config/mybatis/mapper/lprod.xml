@@ -8,5 +8,22 @@
     select * 
     from LPROD
   </select>
+  
+  <select id="getLprodPagingList" parameterType="page" resultType="lprod">
+     select *
+	   from
+	       (select rownum rn, a.*
+	       from
+	           (select  *
+	           from    LPROD
+	           order by lprod_gu) a)
+   	  where rn between #{size} * (#{page} - 1) + 1 and #{size} * #{page}
+  </select>
+  
+  <!-- 사용자 전체 건수 조회 -->
+  <select id="getLprodTotalCnt" resultType="Integer">
+  		select count(*)
+  		  from LPROD
+  </select>
     
 </mapper>

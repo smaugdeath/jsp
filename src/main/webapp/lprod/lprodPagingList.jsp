@@ -89,12 +89,50 @@
 
 		<div class="text-center">
 			<ul class="pagination">
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-			</ul>
+                <!--이전 페이지 가기 : 지금 있는 페이지에서 한 페이지 전으로  
+                   	단 1페이지인 경우는 li 태그에 class="disabled"를 추가를 하고
+                   	이동 경로는 차단
+                -->
+            	<c:choose>
+                	<c:when test="${ pageVo.page == '1' }">
+                    	<li class="disabled">            
+                        <span aria-hidden="true">&laquo;</span>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                        <a href="${ cp }/lprodPagingList?page=${ pageVo.page - 1 }" aria-label="Previous">                           
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </c:otherwise>
+                </c:choose>
+                </li>
+					
+                    <c:forEach begin="1" end="${paginationSize }" var="page">
+                    
+                    <c:choose>
+                    	<c:when test="${page == pageVo.page }">
+                    		 <li class="active"><span>${page }</span></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${cp }/lprodPagingList?page=${page }">${page }</a></li>
+					</c:otherwise>
+				</c:choose>                       
+                </c:forEach>
+                    
+                <c:choose>
+                	<c:when test="${ pageVo.page == paginationSize }">
+                    	<li class="disabled">            
+                        <span aria-hidden="true">&raquo;</span>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                        <a href="${ cp }/lprodPagingList?page=${ pageVo.page + 1 }" aria-label="Next">                           
+                        <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </c:otherwise>
+                </c:choose>
+                </li>
+            </ul>
 		</div>
 	</div>
 </div>
