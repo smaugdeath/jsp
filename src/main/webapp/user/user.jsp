@@ -37,13 +37,6 @@
          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			
 			<form class="form-horizontal" role="form">
-					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userId" name="userId"
-								placeholder="사용자 아이디">
-						</div>
-					</div>
 
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
