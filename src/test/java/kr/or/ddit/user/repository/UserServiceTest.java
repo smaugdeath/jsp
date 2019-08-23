@@ -2,6 +2,8 @@ package kr.or.ddit.user.repository;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +19,13 @@ public class UserServiceTest {
    
    private IUserService userService;
    
+   private String userId = "brownTest";
+   
    @Before
    public void setup() {
       userService = new UserService();
+      
+      userService.deleteUser(userId);
    }
 
    /**
@@ -99,5 +105,29 @@ public class UserServiceTest {
       assertEquals(10, userList.size());
       assertEquals("xuserid22", userList.get(0).getUserId());
       assertEquals(11, paginationSize);
+   }
+   
+   @Test
+   public void insertUserTest() throws ParseException {
+	   /***Given***/
+	   User user = new User();
+	   
+	   String userId = "brownTest";
+	   
+	   user.setUserId(userId);
+	   user.setUserNm("브라운테스트");
+	   user.setPass("brownTest1234");
+	   user.setReg_dt(new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-08"));
+	   user.setAlias("곰테스트");
+	   user.setAddr1("대전광역시 중구 중앙로 76");
+	   user.setAddr2("영민빌딩 2층 DDIT");
+	   user.setZipcode("34940");
+	   
+
+	   /***When***/
+	   int insertCnt = userService.insertUser(user);
+
+	   /***Then***/
+	   assertEquals(1, insertCnt);
    }
 }
