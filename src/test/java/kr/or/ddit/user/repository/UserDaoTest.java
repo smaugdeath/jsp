@@ -129,6 +129,7 @@ public class UserDaoTest {
 	   assertEquals(105, totalCnt);
    }
    
+   
    @Test
    public void insertUserTest() throws ParseException {
 	   /***Given***/
@@ -153,5 +154,24 @@ public class UserDaoTest {
 	   /***Then***/
 	   assertEquals(1, insertCnt);
 
+   }
+   
+   @Test
+   public void modifyUserTest() {
+      /***Given***/
+      User user = new User();
+      
+      user.setUserId("brownTest1");
+      user.setUserNm("가나다");
+      user.setAlias("별명");
+      user.setPass("1231564");
+      user.setRealfilename("2313156");
+
+      /***When***/
+      int cnt = userDao.modifyUser(sqlSession, user);
+      sqlSession.commit();
+      
+      /***Then***/
+      assertEquals(1, cnt);
    }
 }

@@ -130,4 +130,22 @@ public class UserServiceTest {
 	   /***Then***/
 	   assertEquals(1, insertCnt);
    }
+   
+   @Test
+   public void modifyUserTest() {
+      /***Given***/
+      User user = new User();
+      
+      user.setUserId("brownTest");
+      user.setUserNm("가나다");
+      user.setAlias("별명");
+      user.setPass("1231564");
+      user.setRealfilename("2313156");
+
+      /***When***/
+      int cnt = userService.modifyUser(user);
+      
+      /***Then***/
+      assertEquals(1, cnt);
+   }
 }

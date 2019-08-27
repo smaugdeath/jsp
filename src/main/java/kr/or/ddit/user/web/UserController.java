@@ -20,33 +20,42 @@ import kr.or.ddit.user.service.UserService;
  */
 @WebServlet("/user")
 public class UserController extends HttpServlet {
-   private static final long serialVersionUID = 1L;
-   private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-   private IUserService userService;
-   
-   @Override
-   public void init() throws ServletException {
-      userService = new UserService();
-   }
-
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String userId = request.getParameter("userId");
-      
-      logger.debug("userId : {}", userId);
-      
-      User user = userService.getUser(userId);
-      
-      request.setAttribute("user", user);
-      
-      request.getRequestDispatcher("/user/user.jsp").forward(request, response);
-      
-   
-   }
-   
-   @Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	   logger.debug("userController.doPost");
-	   doGet(req, resp);
+	private static final long serialVersionUID = 1L;
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
+	private IUserService userService;
+	
+	@Override
+	public void init() throws ServletException {
+		userService = new UserService();
 	}
-
+	
+       
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String userId = request.getParameter("userId");
+    	
+    	logger.debug("userId : {}", userId);
+    	
+    	User user = userService.getUser(userId);
+    	
+    	request.setAttribute("user", user);
+    	
+    	request.getRequestDispatcher("/user/user.jsp").forward(request, response);
+	}
+    
+    @Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	logger.debug("userControoler.doPost");
+		doGet(req, resp);
+	}
+    
+    
 }
+
+
+
+
+
+
+

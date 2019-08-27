@@ -82,6 +82,21 @@ public interface IUserDao {
 	*/
 	int deleteUser(SqlSession sqlSession, String userId);
 	
+	/**
+	* Method : modifyUser
+	* 작성자 : PC-24
+	* 변경이력 :
+	* @param sqlSession
+	* @param user
+	* @return
+	* Method 설명 : 사용자 정보 수정
+	*/
+	public int modifyUser(SqlSession sqlSession, User user);
+	
+	
+	
+	
+	
 	
 	
 }

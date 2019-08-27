@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.user.model.User;
-import kr.or.ddit.util.MybatisUtil;
 
 public class UserDao implements IUserDao{
 
@@ -112,6 +111,21 @@ public class UserDao implements IUserDao{
 	public int deleteUser(SqlSession sqlSession, String userId) {
 		return sqlSession.delete("user.deleteUser", userId);
 		
+	}
+
+	/**
+	* Method : modifyUser
+	* 작성자 : PC-24
+	* 변경이력 :
+	* @param sqlSession
+	* @param user
+	* @return
+	* Method 설명 : 사용자 정보 수정
+	*/
+	@Override
+	public int modifyUser(SqlSession sqlSession, User user) {
+		int cnt = sqlSession.update("user.modifyUser", user);
+		return cnt;
 	}
 	
 	
