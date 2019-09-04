@@ -33,5 +33,6 @@ public class ProdListController extends HttpServlet {
 		
 		request.getRequestDispatcher("/prod/prodList.jsp").forward(request, response);
 	}
+	
 
 }

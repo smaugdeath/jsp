@@ -18,7 +18,7 @@ public class UserService implements IUserService {
    public UserService() {
       userDao = new UserDao();
    }
-
+   
    @Override
    public List<User> getUserList() {
       SqlSession sqlSession = MybatisUtil.getSession();

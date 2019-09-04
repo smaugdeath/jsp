@@ -27,7 +27,7 @@ public class UserDao implements IUserDao{
 		userList.add(new UserVo("moon"));
 		userList.add(new UserVo("james"));
 		*/
-		
+	
 		
 		List<User> userList = sqlSession.selectList("user.getUserList");		
 		

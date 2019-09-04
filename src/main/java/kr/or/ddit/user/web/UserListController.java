@@ -23,7 +23,7 @@ public class UserListController extends HttpServlet {
 	public void init() throws ServletException {
 		userService = new UserService();
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*
 		 * - doGet
