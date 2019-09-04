@@ -114,7 +114,7 @@
                   <label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
                   <div class="col-sm-10">
                      <input type="text" class="form-control" id="userNm" name="userNm"
-                        placeholder="사용자 이름">
+                        placeholder="사용자 이름" value="${user.userNm }">
                   </div>
                </div>
                
@@ -122,7 +122,7 @@
                   <label for="alias" class="col-sm-2 control-label">별명</label>
                   <div class="col-sm-10">
                      <input type="text" class="form-control" id="alias" name="alias"
-                        placeholder="별명">
+                        placeholder="별명"  value="${user.alias }">
                   </div>
                </div>
                
@@ -130,7 +130,7 @@
                   <label for="reg_dt" class="col-sm-2 control-label">생일</label>
                   <div class="col-sm-10">
                      <input type="date" class="form-control" id="reg_dt" name="reg_dt"
-                        placeholder="생일">
+                        placeholder="생일" value='<fmt:formatDate value="${user.reg_dt }" pattern="yyyy/MM/dd"/>'>
                   </div>
                </div>
                
@@ -138,7 +138,7 @@
                   <label for="pass" class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">
                      <input type="password" class="form-control" id="pass" name="pass"
-                        placeholder="비밀번호">
+                        placeholder="비밀번호" value="${user.pass }">
                   </div>
                </div>
 
@@ -146,7 +146,7 @@
                   <label for="addr1" class="col-sm-2 control-label">주소1</label>
                   <div class="col-sm-8">
                      <input type="text" class="form-control" id="addr1" name="addr1"
-                        placeholder="주소1" readonly>
+                        placeholder="주소1" value="${user.addr1 }">
                   </div>
                   <div class="col-sm-2">
                      <button type="button" id="zipcodeBtn" class="btn btn-default">우편번호</button>
@@ -157,7 +157,7 @@
                   <label for="addr2" class="col-sm-2 control-label">주소2</label>
                   <div class="col-sm-10">
                      <input type="text" class="form-control" id="addr2" name="addr2"
-                        placeholder="주소2">
+                        placeholder="주소2" value="${user.addr1 }">
                   </div>
                </div>
 
@@ -165,7 +165,7 @@
                   <label for="zipcode" class="col-sm-2 control-label">우편번호</label>
                   <div class="col-sm-10">
                      <input type="text" class="form-control" id="zipcode"
-                        name="zipcode" placeholder="우편번호" readonly value="${param.zipcode }">
+                        name="zipcode" placeholder="우편번호" value="${param.zipcode }" readonly >
                   </div>
                </div>
 
