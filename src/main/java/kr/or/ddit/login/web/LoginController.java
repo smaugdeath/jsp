@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
    
 /**
    * Method : doGet
-   * 작성자 : PC-13
+   * 작성자 : PC-24
    * 변경이력 :
    * @param request
    * @param response
