@@ -13,7 +13,7 @@ public class RequestVo {
 			
 		}
 		//동치성(같은 값을 가지냐)
-		if("test".contentEquals("test")) {
+		if("test".equals("test")) {
 			
 		}
 	}
