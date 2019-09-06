@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-@WebServlet(urlPatterns = "/ContextPathInitServelet", loadOnStartup =1)
+//@WebServlet(urlPatterns = "/ContextPathInitServelet", loadOnStartup =1)
 public class ContextPathInitServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
